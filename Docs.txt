@@ -1,0 +1,9 @@
+fetching quiz will be used to manage quiz file in initial stage
+main -> main file
+quiz -> the json file of our questions
+workingWithHSON -> work with JSON in initial tage
+
+
+
+
+// https://opentdb.com/api_config.php -> To fetch more of these datas
