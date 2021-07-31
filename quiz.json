@@ -1,6 +1,4 @@
-// https://opentdb.com/api_config.php -> To fetch more of these datas
-{
-    "results": [
+{"results": [
         {
             "category": "Entertainment: Video Games",
             "type": "multiple",

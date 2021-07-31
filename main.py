@@ -9,6 +9,16 @@ import random
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 
+# text to speak function
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
+
+#Applications Path
+chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+spotifypath= "C:\\Users\\User\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Spotify.lnk"
+codePath = "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+
 
 #For Some Normal Talk With dobby
 def dobbySpeak():
@@ -17,20 +27,11 @@ def dobbySpeak():
     speak(dobby_there_speak)
 
 def dobbyLoveYou():
-    dobby_love = ["I Love You 3000 Sir", "I Love you too!", "yeah Sir Love You Too!"]
+    dobby_love = ["I Love You 3000 Sir", "I Love you too!", "yeah Sir Love You Too!","aapka aabhar sir"]
     dobby_love_speak = random.choice(dobby_love)
     speak(dobby_love_speak)
 
-#Applications Path
-chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-spotifypath= "C:\\Users\\User\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Spotify.lnk"
-codePath = "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-
-def speak(audio):
-    engine.say(audio)
-    engine.runAndWait()
-
-
+# Greeting message
 def wishMe():
     hour = int(datetime.datetime.now().hour)
     if hour>=0 and hour<12:
@@ -44,11 +45,12 @@ def wishMe():
 
     speak("Hello Sir dobby's Here to Help You!")       
 
+#  function
 def takeCommand():
-
+    print("Listening..")
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Listening...")
+        print("Listening Microphone...")
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source=source)
         audio = r.listen(source)
@@ -60,16 +62,17 @@ def takeCommand():
 
     except:   
         print("Say that again please...")  
+        speak("Can't hear you sir, say that again!")
         return "None"
     return query
 
 
 if __name__ == "__main__":
     wishMe()
+    takeCommand()
+
     while True:
-
         query = takeCommand().lower()
-
         
         if 'wikipedia' in query:
             speak('Searching Wikipedia...')
@@ -80,6 +83,9 @@ if __name__ == "__main__":
             speak(results)
 
         elif 'shutdown' in query:
+            speck("shutdown will begin in 3 seconds")
+            speck("2")
+            speck("1")
             quit(speak ('Shutting Down.... Good Bye Sir'))
 
         elif 'open youtube' in query:
